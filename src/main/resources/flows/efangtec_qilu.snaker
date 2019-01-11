@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<process name="opt" displayName="领药流程" instanceUrl="/snaker/flow/all" >
+<start layout="36,146,50,50" name="start" >
+<transition offset="0,-10" to="medicine" name="pathNew1" />
+</start>
+<task layout="177,148,100,50" name="medicine" displayName="领药流程" form="/qilu/medicine" taskType="Major" performType="ANY" >
+<transition offset="0,-10" to="foundation" name="pathNew2" displayName="path19" />
+</task>
+<task layout="348,147,100,50" name="foundation" displayName="基金会审批" form="/qilu/foundation" taskType="Major" performType="ANY" >
+<transition offset="0,-10" to="audit" name="pathNew3" />
+</task>
+<decision layout="485,145,100,50" name="audit" handleClass="com.efangtec.workflow.condition.ConditionParam" >
+<transition offset="0,-10" to="medicine" g="536,73;389,77;227,77" name="refuse" displayName="不通过" />
+<transition offset="0,-10" to="upload" name="model_1" displayName="1模式" />
+<transition offset="0,-10" to="upload21" name="model_2" displayName="2模式" />
+<transition offset="0,-10" to="upload31" name="model_3" displayName="3模式" />
+</decision>
+<task layout="580,557,100,50" name="upload" displayName="上传处方" form="/qilu/upload" taskType="Major" performType="ANY" >
+<transition offset="0,-10" to="getMedicine" name="opt5" />
+</task>
+<task layout="579,784,100,50" name="getMedicine" displayName="领药" form="/qilu/getMedicine" taskType="Major" performType="ANY" >
+<transition offset="0,-10" to="end" g="630,908;770,907" name="opt6" />
+</task>
+<task layout="752,444,100,50" name="upload21" displayName="第一次上传处方" form="/qilu/upload21" taskType="Major" performType="ANY" >
+<transition offset="0,-10" to="getMedicine21" name="opt8" />
+</task>
+<task layout="753,549,100,50" name="getMedicine21" displayName="第一次领药" form="/qilu/getMedicine21" taskType="Major" performType="ANY" >
+<transition offset="0,-10" to="upload22" name="opt9" />
+</task>
+<task layout="754,663,100,50" name="upload22" displayName="第二次上传处方" form="/qilu/upload22" taskType="Major" performType="ANY" >
+<transition offset="0,-10" to="getMedicine22" name="opt10" />
+</task>
+<task layout="758,781,100,50" name="getMedicine22" displayName="第二次领药" form="/qilu/getMedicine22" taskType="Major" performType="ANY" >
+<transition offset="0,-10" to="end" name="opt11" />
+</task>
+<task layout="938,405,100,50" name="upload31" displayName="第一次上传处方" form="/qilu/upload31" taskType="Major" performType="ANY" >
+<transition offset="0,-10" to="getMedicine31" name="opt13" />
+</task>
+<task layout="938,474,100,50" name="getMedicine31" displayName="第一次领药" form="/qilu/getMedicine31" taskType="Major" performType="ANY" >
+<transition offset="0,-10" to="upload32" name="opt14" />
+</task>
+<task layout="939,553,100,50" name="upload32" displayName="第二次上传处方" form="/qilu/upload32" taskType="Major" performType="ANY" >
+<transition offset="0,-10" to="getMedicine32" name="opt15" />
+</task>
+<task layout="940,631,100,50" name="getMedicine32" displayName="第二次领药" form="/qilu/getMedicine32" taskType="Major" performType="ANY" >
+<transition offset="0,-10" to="upload33" name="opt16" />
+</task>
+<task layout="941,704,100,50" name="upload33" displayName="第三次上传处方" form="/qilu/upload33" taskType="Major" performType="ANY" >
+<transition offset="0,-10" to="getMedicine33" name="opt17" />
+</task>
+<task layout="942,781,100,50" name="getMedicine33" displayName="第三次领药" form="/qilu/getMedicine33" taskType="Major" performType="ANY" >
+<transition offset="0,-10" to="end" g="992,906;861,907" name="opt18" />
+</task>
+<end layout="789,978,50,50" name="end" >
+</end>
+</process>

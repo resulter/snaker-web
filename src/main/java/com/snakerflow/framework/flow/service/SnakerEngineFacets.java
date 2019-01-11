@@ -45,6 +45,7 @@ public class SnakerEngineFacets {
 	public void initFlows() {
         engine.process().deploy(StreamHelper.getStreamFromClasspath("flows/leave.snaker"));
         engine.process().deploy(StreamHelper.getStreamFromClasspath("flows/borrow.snaker"));
+        engine.process().deploy(StreamHelper.getStreamFromClasspath("flows/efangtec_qilu.snaker"));
 	}
 	
 	public SnakerEngine getEngine() {
